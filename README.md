@@ -3,6 +3,10 @@
 ### How to install
 - Windows
  ```shell
+ pip install vector-pkg-ENDERRAYQUAZA
+ ```
+ or
+ ```shell
  py -m pip install --index-url https://test.pypi.org/simple/ --no-deps vector-pkg-ENDERRAYQUAZA
  ```
 - Unix/macOS
