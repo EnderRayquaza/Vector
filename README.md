@@ -2,7 +2,7 @@
 
 ### How to install
  ```shell
- pip install vector-pkg-EnderRayquaza
+ pip install vector-pkg-enderrayquaza
  ```
 ### How to use
 ##### Vector2d
