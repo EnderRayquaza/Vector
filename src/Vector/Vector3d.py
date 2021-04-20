@@ -177,3 +177,15 @@ class Vector3d:
             The vector with which the angle which is calculated is formed.
         """
         return math.degrees(math.acos(self**v/(self.st*v.st)))
+
+    def show(self, name="v"):
+        """
+        Prints its composants and its standard.
+
+        Parameters
+        ----------
+        name : str
+            The name of the Vector.
+        """
+        print(name, "(", self.x, "/", self.y, ")")
+        print("||", name, "|| = ", self.st, sep="")

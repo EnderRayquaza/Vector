@@ -67,7 +67,7 @@ class Vector2d:
         
         self.x = x
         self.y = y
-        self.st = math.sqrt(x**2+y**2) #standard
+        self.st = math.sqrt(self.x**2+self.y**2)
 
     def __add__(self, v):
         """
@@ -180,3 +180,15 @@ class Vector2d:
         Makes a complex number such as x+yj.
         """
         return complex(self.x, self.y)
+
+    def show(self, name="v"):
+        """
+        Prints its composants and its standard.
+
+        Parameters
+        ----------
+        name : str
+            The name of the Vector.
+        """
+        print(name, "(", self.x, "/", self.y, ")")
+        print("||", name, "|| = ", self.st, sep="")
