@@ -6,7 +6,7 @@ class Vector2d:
 
     ...
 
-    v2.0.1
+    v2.0.2
     by EnderRayquaza
     
     Attributes
@@ -139,7 +139,7 @@ class Vector2d:
         k : float
             The number which multiplied this vector.
         """
-        return Vector2d(self.x*k, self.y*k, str(self.name + " * " + k)
+        return Vector2d(self.x*k, self.y*k, str(self.name + " * " + k))
 
     def __truediv__(self, k):
         """
