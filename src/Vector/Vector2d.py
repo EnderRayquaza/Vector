@@ -262,5 +262,5 @@ class Vector2d:
         print("||", name, "|| = ", self.st, sep="")
         print("dir(", self.dir[0], "/", self.dir[1], ")")
 
-global V0_
-V0_ = Vector2d(0, 0, "0_")
+def V0_():
+    return Vector2d(0, 0, "0_")

@@ -261,5 +261,5 @@ class Vector3d:
         print("dir(", self.dir[0], "/", self.dir[1], "/",
               self.dir[2], ")")
 
-global V0_
-V0_ = Vector3d(0, 0, 0, "0_")
+def V0_():
+    return Vector3d(0, 0, 0, "0_")
