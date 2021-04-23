@@ -67,3 +67,4 @@ a = v%u  #Calculates the angle (in degrees) between v and u
 print(a) # >>> 121.90015691773374
 ```
 You can use the constant V0_ which is worth Vector3(0, 0, 0)
+
