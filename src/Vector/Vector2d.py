@@ -19,6 +19,8 @@ class Vector2d:
         Its standard.
     dir : tuple
         Its direction. It's a vector that its standars is equal to 1.
+    name : str
+        Its name.
         
     Methodes
     --------
@@ -71,7 +73,7 @@ class Vector2d:
 
     """
     
-    def __init__(self, x, y):
+    def __init__(self, x, y, name=None):
         """
         Parameters
         ----------
@@ -79,6 +81,8 @@ class Vector2d:
             Its composant x.
         y : float
             Its composant y.
+        name : str
+            Its name.
         """
         
         self.x = x
@@ -88,6 +92,8 @@ class Vector2d:
             self.dir = (self.x/self.st, self.y/self.st)
         else:
             self.dir = (0, 0)
+
+        self.name = name
 
     def calculate_param(self):
         """
@@ -238,16 +244,23 @@ class Vector2d:
         """
         return complex(self.x, self.y)
 
-    def show(self, name="v"):
+    def show(self, name=None):
         """
-        Prints its composants and its standard.
+        Prints its composants, its standard and its direction.
 
         Parameters
         ----------
         name : str
             The name of the Vector.
         """
+        if(name is None):
+            if(self.name is None):
+                name = "v"
+            else:
+                name = self.name
         print(name, "(", self.x, "/", self.y, ")")
         print("||", name, "|| = ", self.st, sep="")
+        print("dir(", self.dir[0], "/", self.dir[1], ")")
 
-V0 = Vector2d(0, 0)
+global V0_
+V0_ = Vector2d(0, 0, "0_")

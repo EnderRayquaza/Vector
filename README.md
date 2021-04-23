@@ -1,5 +1,5 @@
 # Vector pkg
-## Actual version : 1.3
+## Actual version : 1.5
 ### How to install
  ```shell
  pip install vector-pkg-enderrayquaza
@@ -35,6 +35,7 @@ print(a) # >>> 121.90015691773374
 z = complex(v) #Makes a complex number equal at x+yi
 print(z) # >>> (5+7.5j)
 ```
+You can use the constant V0_ which is worth Vector2d(0, 0)
 
 ##### Vector3d
 ```Python
@@ -65,3 +66,4 @@ print(p) # >>> -38.125
 a = v%u  #Calculates the angle (in degrees) between v and u
 print(a) # >>> 121.90015691773374
 ```
+You can use the constant V0_ which is worth Vector3(0, 0, 0)

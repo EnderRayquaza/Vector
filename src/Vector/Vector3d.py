@@ -21,6 +21,8 @@ class Vector3d:
         Its standard.
     dir : tuple
         Its direction. It's a vector that its standars is equal to 1.
+    name : str
+        Its name.
 
 
     Methodes
@@ -70,7 +72,7 @@ class Vector3d:
 
     """
     
-    def __init__(self, x, y, z):
+    def __init__(self, x, y, z, name=None):
         """
         Parameters
         ----------
@@ -80,6 +82,8 @@ class Vector3d:
             Its composant y.
         z : float
             Its composant z.
+        name : str
+            Its name.
         """
         
         self.x = x
@@ -90,6 +94,8 @@ class Vector3d:
             self.dir = (self.x/self.st, self.y/self.st, self.z/self.st)
         else:
             self.dir = (0, 0, 0)
+
+        self.name = name
 
     def calculate_param(self):
         """
@@ -238,14 +244,22 @@ class Vector3d:
 
     def show(self, name="v"):
         """
-        Prints its composants and its standard.
+        Prints its composants, its standard and its direction.
 
         Parameters
         ----------
         name : str
             The name of the Vector.
         """
-        print(name, "(", self.x, "/", self.y, ")")
+        if(name is None):
+            if(self.name is None):
+                name = "v"
+            else:
+                name = self.name
+        print(name, "(", self.x, "/", self.y, "/", self.z ")")
         print("||", name, "|| = ", self.st, sep="")
+        print("dir(", self.dir[0], "/", self.dir[1], "/",
+              self.dir[2], ")")
 
-V0 = Vector3d(0, 0, 0)
+global V0_
+V0_ = Vector3d(0, 0, 0, "0_")
