@@ -6,6 +6,9 @@ class Vector3d:
 
     ...
 
+    v1.3
+    by EnderRayquaza
+
     Attributes
     ----------
     x : float
@@ -16,9 +19,15 @@ class Vector3d:
         Its composant z.
     st : float
         Its standard.
+    dir : tuple
+        Its direction. It's a vector that its standars is equal to 1.
+
 
     Methodes
     --------
+    calculate_param()
+        Calculates its standard and its direction.
+    
     __add__(v)
         Operator +
         Adds the vector v and this vector.
@@ -29,7 +38,11 @@ class Vector3d:
 
     __mul__(k)
         Operator *
-        Multiplies the number k to this vector.
+        Multiplies the number k and this vector.
+
+    __truediv__(k)
+        Operator /
+        Divides the number k to this vector.
 
     __iadd__(v)
         Operator +=
@@ -42,6 +55,10 @@ class Vector3d:
     __imul__(k)
         Operator *=
         Multiplies the number k to this vector.
+
+    __itruediv__(k)
+        Operator /=
+        Divides the number k to this vector.
 
     __pow__(v)
         Operator **
@@ -68,7 +85,20 @@ class Vector3d:
         self.x = x
         self.y = y
         self.z = z
-        self.st = math.sqrt(x**2+y**2+z**2) #standard
+        self.st = math.sqrt(self.x**2+self.y**2+self.z**2)
+        if(self.st != 0):
+            self.dir = (self.x/self.st, self.y/self.st, self.z/self.st)
+        else:
+            self.dir = (0, 0, 0)
+
+    def calculate_param(self):
+        """
+        Calculates its standard and its direction.
+        """
+        if(self.st != 0):
+            self.dir = (self.x/self.st, self.y/self.st, self.z/self.st)
+        else:
+            self.dir = (0, 0, 0)
 
     def __add__(self, v):
         """
@@ -106,6 +136,18 @@ class Vector3d:
         """
         return Vector2d(self.x*k, self.y*k, self.z*k)
 
+    def __truediv__(self, k):
+        """
+        Operator /
+        Divides the number k to this vector.
+
+        Parameters
+        ----------
+        k : float
+            The number which divided this vector.
+        """
+        return Vector2d(self.x/k, self.y/k, self.z/k)
+
     def __iadd__(self, v):
         """
         Operator +=
@@ -119,7 +161,7 @@ class Vector3d:
         self.x += v.x
         self.y += v.y
         self.z += v.z
-        self.st = math.sqrt(self.x**2+self.y**2+self.z**2)
+        self.calculate_param()
         return self
 
     def __isub__(self, v):
@@ -135,7 +177,7 @@ class Vector3d:
         self.x -= v.x
         self.y -= v.y
         self.z -= v.z
-        self.st = math.sqrt(self.x**2+self.y**2+self.z**2)
+        self.calculate_param()
         return self
 
     def __imul__(self, k):
@@ -151,7 +193,23 @@ class Vector3d:
         self.x *= k
         self.y *= k
         self.z *= k
-        self.st = math.sqrt(self.x**2+self.y**2+self.z**2)
+        self.calculate_param()
+        return self
+
+    def __itruediv__(self, k):
+        """
+        Operator /
+        Divides the number k to this vector.
+
+        Parameters
+        ----------
+        k : float
+            The number which divided this vector.
+        """
+        self.x /= k
+        self.y /= k
+        self.z /= k
+        self.calculate_param()
         return self
 
     def __pow__(self, v):
