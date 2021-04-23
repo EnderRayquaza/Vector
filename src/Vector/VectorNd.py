@@ -1,27 +1,26 @@
 import math
 
-class Vector2d:
+class VectorNd:
     """
-    A mathematical vector in 2 dimensions.
+    A mathematical vector in n dimensions.
 
     ...
 
     v2.0
     by EnderRayquaza
-    
+
     Attributes
     ----------
-    x : float
-        Its composant x.
-    y : float
-        Its composant y.
+    l : list
+        A list with its composants.
     st : float
         Its standard.
-    dir : tuple
+    dir : list
         Its direction. It's a vector that its standars is equal to 1.
     name : str
         Its name.
-        
+
+
     Methodes
     --------
     calculate_param()
@@ -67,31 +66,29 @@ class Vector2d:
         Operator %
         Returns the angle between this vector and v.
 
-    __complex__()
-        Operator complex()
-        Makes a complex number such as x+yj.
-
     """
     
-    def __init__(self, x, y, name=None):
+    def __init__(self, l, name=None):
         """
         Parameters
         ----------
-        x : float
-            Its composant x.
-        y : float
-            Its composant y.
+        l : list
+            A list with its composants.
         name : str
             Its name.
         """
         
-        self.x = x
-        self.y = y
-        self.st = math.sqrt(self.x**2+self.y**2)
+        self.l = l
+        total = 0
+        for comp in self.l:
+            total += comp**2
+        self.st = math.sqrt(total)
         if(self.st != 0):
-            self.dir = (self.x/self.st, self.y/self.st)
+            self.dir = list()
+            for comp in self.l:
+                self.dir.append(comp/self.st)
         else:
-            self.dir = (0, 0)
+            self.dir = [0]*len(self.l)
 
         self.name = name
 
@@ -99,11 +96,17 @@ class Vector2d:
         """
         Calculates its standard and its direction.
         """
-        self.st = math.sqrt(self.x**2+self.y**2)
+        total = 0
+        for comp in self.l:
+            total += comp**2
+        self.st = math.sqrt(total)
         if(self.st != 0):
-            self.dir = (self.x/self.st, self.y/self.st)
+            self.dir = list()
+            for comp in self.l:
+                self.dir.append(comp/self.st)
         else:
-            self.dir = (0, 0)
+            self.dir = [0]*len(self.l)
+
 
     def __add__(self, v):
         """
@@ -112,10 +115,13 @@ class Vector2d:
 
         Parameters
         ----------
-        v : Vector2d
+        v : VectorNd
             The vector which is added.
         """
-        return Vector2d(self.x+v.x, self.y+v.y, self.name + " + " + v.name)
+        new_l = list()
+        for i in range(len(self.l)):
+            new_l.append(self.l[i]+v.l[i])
+        return VectorNd(new_l, self.name + " + " + v.name)
 
     def __sub__(self, v):
         """
@@ -124,10 +130,13 @@ class Vector2d:
 
         Parameters
         ----------
-        v : Vector2d
+        v : VectorNd
             The vector which is subtracted.
         """
-        return Vector2d(self.x-v.x, self.y-v.y, self.name + " - " + v.name)
+        new_l = list()
+        for i in range(len(self.l)):
+            new_l.append(self.l[i]-v.l[i])
+        return VectorNd(new_l, self.name + " - " + v.name)
 
     def __mul__(self, k):
         """
@@ -139,7 +148,10 @@ class Vector2d:
         k : float
             The number which multiplied this vector.
         """
-        return Vector2d(self.x*k, self.y*k, self.name + " * " + k)
+        new_l = list()
+        for i in range(len(self.l)):
+            new_l.append(self.l[i]*k)
+        return VectorNd(new_l, self.name + " * " + k)
 
     def __truediv__(self, k):
         """
@@ -151,7 +163,10 @@ class Vector2d:
         k : float
             The number which divided this vector.
         """
-        return Vector2d(self.x/k, self.y/k, self.name + " / " + v.name)
+        new_l = list()
+        for i in range(len(self.l)):
+            new_l.append(self.l[i]/k)
+        return VectorNd(new_l, self.name + " / " + k)
 
     def __iadd__(self, v):
         """
@@ -160,11 +175,11 @@ class Vector2d:
 
         Parameters
         ----------
-        v : Vector2d
+        v : VectorNd
             The vector which is added.
         """
-        self.x += v.x
-        self.y += v.y
+        for i in range(len(self.l)):
+            self.l[i] += v.l[i]
         self.calculate_param()
         return self
 
@@ -175,11 +190,11 @@ class Vector2d:
 
         Parameters
         ----------
-        v : Vector2d
+        v : VectorNd
             The vector which is substracted.
         """
-        self.x -= v.x
-        self.y -= v.y
+        for i in range(len(self.l)):
+            self.l[i] -= v.l[i]
         self.calculate_param()
         return self
 
@@ -193,8 +208,8 @@ class Vector2d:
         k : float
             The number which multiplies this vector.
         """
-        self.x *= k
-        self.y *= k
+        for i in range(len(self.l)):
+            self.l[i] *= k
         self.calculate_param()
         return self
 
@@ -208,8 +223,8 @@ class Vector2d:
         k : float
             The number which divided this vector.
         """
-        self.x /= k
-        self.y /= k
+        for i in range(len(self.l)):
+            self.l[i] /= k
         self.calculate_param()
         return self
 
@@ -220,10 +235,13 @@ class Vector2d:
 
         Parameters
         ----------
-        v : Vector2d
+        v : VectorNd
             The vector with which the scalar product is calculated.
         """
-        return self.x*v.x+self.y*v.y
+        sc_prod = 0
+        for i in range(len(self.l)):
+            sc_prod += self.l[i]*v.l[i])
+        return self.x*v.x+self.y*v.y+self.z*v.z
 
     def __mod__(self, v):
         """
@@ -232,19 +250,12 @@ class Vector2d:
 
         Parameters
         ----------
-        v : Vector2d
+        v : VectorNd
             The vector with which the angle which is calculated is formed.
         """
         return math.degrees(math.acos(self**v/(self.st*v.st)))
 
-    def __complex__(self):
-        """
-        Operator complex()
-        Makes a complex number such as x+yj.
-        """
-        return complex(self.x, self.y)
-
-    def show(self, name=None):
+    def show(self, name="v"):
         """
         Prints its composants, its standard and its direction.
 
@@ -258,9 +269,15 @@ class Vector2d:
                 name = "v"
             else:
                 name = self.name
-        print(name, "(", self.x, "/", self.y, ")")
+        print(name, "(", end="")
+        for comp in self.l:
+            print(comp, "/", end="")
+        print(")")
         print("||", name, "|| = ", self.st, sep="")
-        print("dir(", self.dir[0], "/", self.dir[1], ")")
+        print("dir(",
+        for comp in self.dir:
+            print(comp, "/", end="")
+        print(")")
 
 def V0_():
-    return Vector2d(0, 0, "0_")
+    return VectorNd([0], "0_")

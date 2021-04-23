@@ -6,7 +6,7 @@ class Vector3d:
 
     ...
 
-    v1.3
+    v2.0
     by EnderRayquaza
 
     Attributes
@@ -101,6 +101,7 @@ class Vector3d:
         """
         Calculates its standard and its direction.
         """
+        self.st = math.sqrt(self.x**2+self.y**2+self.z**2)
         if(self.st != 0):
             self.dir = (self.x/self.st, self.y/self.st, self.z/self.st)
         else:
@@ -116,7 +117,7 @@ class Vector3d:
         v : Vector3d
             The vector which is added.
         """
-        return Vector3d(self.x+v.x, self.y+v.y, self.z+v.z)
+        return Vector3d(self.x+v.x, self.y+v.y, self.z+v.z, self.name + " + " + v.name)
 
     def __sub__(self, v):
         """
@@ -128,7 +129,7 @@ class Vector3d:
         v : Vector3d
             The vector which is subtracted.
         """
-        return Vector3d(self.x-v.x, self.y-v.y, self.z+v.z)
+        return Vector3d(self.x-v.x, self.y-v.y, self.z+v.z, self.name + " - " + v.name)
 
     def __mul__(self, k):
         """
@@ -140,7 +141,7 @@ class Vector3d:
         k : float
             The number which multiplied this vector.
         """
-        return Vector2d(self.x*k, self.y*k, self.z*k)
+        return Vector2d(self.x*k, self.y*k, self.z*k, self.name + " * " + k)
 
     def __truediv__(self, k):
         """
@@ -152,7 +153,7 @@ class Vector3d:
         k : float
             The number which divided this vector.
         """
-        return Vector2d(self.x/k, self.y/k, self.z/k)
+        return Vector2d(self.x/k, self.y/k, self.z/k, self.name + " / " + k)
 
     def __iadd__(self, v):
         """
