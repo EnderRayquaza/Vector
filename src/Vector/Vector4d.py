@@ -74,7 +74,7 @@ class Vector4d:
 
     """
     
-    def __init__(self, x, y, z, t, name=None):
+    def __init__(self, x, y, z, t, name="None"):
         """
         Parameters
         ----------

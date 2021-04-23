@@ -68,7 +68,7 @@ class VectorNd:
 
     """
     
-    def __init__(self, l, name=None):
+    def __init__(self, l, name="None"):
         """
         Parameters
         ----------

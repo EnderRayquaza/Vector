@@ -72,7 +72,7 @@ class Vector3d:
 
     """
     
-    def __init__(self, x, y, z, name=None):
+    def __init__(self, x, y, z, name="None"):
         """
         Parameters
         ----------

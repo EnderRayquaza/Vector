@@ -6,7 +6,7 @@ class Vector2d:
 
     ...
 
-    v2.0
+    v2.0.1
     by EnderRayquaza
     
     Attributes
@@ -73,7 +73,7 @@ class Vector2d:
 
     """
     
-    def __init__(self, x, y, name=None):
+    def __init__(self, x, y, name="None"):
         """
         Parameters
         ----------
@@ -115,7 +115,7 @@ class Vector2d:
         v : Vector2d
             The vector which is added.
         """
-        return Vector2d(self.x+v.x, self.y+v.y, self.name + " + " + v.name)
+        return Vector2d(self.x+v.x, self.y+v.y, str(self.name + " + " + v.name))
 
     def __sub__(self, v):
         """
@@ -127,7 +127,7 @@ class Vector2d:
         v : Vector2d
             The vector which is subtracted.
         """
-        return Vector2d(self.x-v.x, self.y-v.y, self.name + " - " + v.name)
+        return Vector2d(self.x-v.x, self.y-v.y, str(self.name + " - " + v.name))
 
     def __mul__(self, k):
         """
@@ -139,7 +139,7 @@ class Vector2d:
         k : float
             The number which multiplied this vector.
         """
-        return Vector2d(self.x*k, self.y*k, self.name + " * " + k)
+        return Vector2d(self.x*k, self.y*k, str(self.name + " * " + k)
 
     def __truediv__(self, k):
         """
@@ -151,7 +151,7 @@ class Vector2d:
         k : float
             The number which divided this vector.
         """
-        return Vector2d(self.x/k, self.y/k, self.name + " / " + v.name)
+        return Vector2d(self.x/k, self.y/k, str(self.name + " / " + v.name))
 
     def __iadd__(self, v):
         """
