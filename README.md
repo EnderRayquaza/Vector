@@ -1,5 +1,5 @@
 # Vector pkg
-## Actual version : 2.0.1
+## Actual version : 2.1.1
 ### How to install
  ```shell
  pip install vector-pkg-enderrayquaza
