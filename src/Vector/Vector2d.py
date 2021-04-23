@@ -97,7 +97,7 @@ class Vector2d:
         if(self.st != 0):
             self.dir = (self.x/self.st, self.y/self.st)
         else:
-            self.dir(0, 0)
+            self.dir = (0, 0)
 
     def __add__(self, v):
         """
@@ -249,3 +249,5 @@ class Vector2d:
         """
         print(name, "(", self.x, "/", self.y, ")")
         print("||", name, "|| = ", self.st, sep="")
+
+V0 = Vector2d(0, 0)

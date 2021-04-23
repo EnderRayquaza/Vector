@@ -247,3 +247,5 @@ class Vector3d:
         """
         print(name, "(", self.x, "/", self.y, ")")
         print("||", name, "|| = ", self.st, sep="")
+
+V0 = Vector3d(0, 0, 0)
