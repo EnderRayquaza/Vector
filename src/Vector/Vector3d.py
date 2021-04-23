@@ -6,7 +6,7 @@ class Vector3d:
 
     ...
 
-    v2.0
+    v2.0.5
     by EnderRayquaza
 
     Attributes
@@ -141,7 +141,7 @@ class Vector3d:
         k : float
             The number which multiplied this vector.
         """
-        return Vector2d(self.x*k, self.y*k, self.z*k, self.name + " * " + k)
+        return Vector2d(self.x*k, self.y*k, self.z*k, self.name + " * " + str(k))
 
     def __truediv__(self, k):
         """
@@ -153,7 +153,7 @@ class Vector3d:
         k : float
             The number which divided this vector.
         """
-        return Vector2d(self.x/k, self.y/k, self.z/k, self.name + " / " + k)
+        return Vector2d(self.x/k, self.y/k, self.z/k, self.name + " / " + str(k))
 
     def __iadd__(self, v):
         """
@@ -253,7 +253,7 @@ class Vector3d:
             The name of the Vector.
         """
         if(name is None):
-            if(self.name is None):
+            if(self.name == "None"):
                 name = "v"
             else:
                 name = self.name

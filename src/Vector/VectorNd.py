@@ -6,7 +6,7 @@ class VectorNd:
 
     ...
 
-    v2.0
+    v2.0.5
     by EnderRayquaza
 
     Attributes
@@ -151,7 +151,7 @@ class VectorNd:
         new_l = list()
         for i in range(len(self.l)):
             new_l.append(self.l[i]*k)
-        return VectorNd(new_l, self.name + " * " + k)
+        return VectorNd(new_l, self.name + " * " + str(k))
 
     def __truediv__(self, k):
         """
@@ -166,7 +166,7 @@ class VectorNd:
         new_l = list()
         for i in range(len(self.l)):
             new_l.append(self.l[i]/k)
-        return VectorNd(new_l, self.name + " / " + k)
+        return VectorNd(new_l, self.name + " / " + str(k))
 
     def __iadd__(self, v):
         """
@@ -265,7 +265,7 @@ class VectorNd:
             The name of the Vector.
         """
         if(name is None):
-            if(self.name is None):
+            if(self.name == "None"):
                 name = "v"
             else:
                 name = self.name
