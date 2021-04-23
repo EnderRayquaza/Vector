@@ -1,10 +1,10 @@
 # Vector pkg
-## Actual version : 1.5.1
+## Actual version : 2.0
 ### How to install
  ```shell
  pip install vector-pkg-enderrayquaza
  ```
-### How to use
+ 
 ##### Vector2d
 ```Python
 import Vector.Vector2d as vec2
@@ -68,3 +68,12 @@ print(a) # >>> 121.90015691773374
 ```
 You can use the constant V0_ which is worth Vector3(0, 0, 0)
 
+##### Vector4d
+Idem that Vector3d and Vector2d but with a 4th composant t (for time).
+
+##### VectorNd
+```Python
+import Vector.VectorNd as vecN
+v = vecN.VectorNd([8, 6, 9, 2.7, -4])
+```
+The rest is like other Vector classes.
